@@ -74,13 +74,13 @@
 
 //     public static void main(String[] args) {
 //     System.setProperty("file.encoding", "UTF-8");
-    
+
 //     reverseAndPrint("Добро пожаловать на курс по Java");
 
 //     reverseAndPrint("I am like Java programs");
 
 //     }
-    
+
 //     private static void reverseAndPrint(String str) {
 //         String[] words = str.split(" ");
 //         for (int i = words.length - 1; i>=0; i--){
@@ -92,9 +92,34 @@
 // Написать программу, которая найдет индекс i для этого массива такой, что сумма элементов с индексами < i равна сумме элементов с индексами > i.
 
 package java_sem1;
-public class program
 
-private static int findMedian(int[] numbers) {
-    // TODO: 14.11.2022 Найти такой index, что сумма слева и справа равны
-    return -1;
+public class Program{
+
+
+    public static void main(String[] args) {
+        int[] numbers = {1, 7, 3, 6, 5, 6};
+        int median = findMedian(numbers);
+        System.out.println("median");
     }
+    
+    private static int findMedian(int[] numbers) {
+    // [a1, a2, a3, a4, a5, a6, a7]
+    
+        int left = 0;
+        for (int i = 1; i < numbers.length - 1; i++) {
+            left += numbers[i - 1];
+    
+            int right = 0;
+            // i + 1, i + 2, ... number.length - 1
+            for (int j = i + 1; j < numbers.length; j++) {
+                right += numbers[j];
+            }
+        
+            if (left == right) {
+                return i;
+            }
+        }
+    
+        return -1;
+    }
+}
